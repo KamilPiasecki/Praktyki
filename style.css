@@ -1,154 +1,115 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-body,
-input {
-  font-family: "Poppins", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f7f6ff;
+}
+
+h2 {
+  margin: 16px;
 }
 
 .container {
-    position: relative;
-    width: 100%;
-    background-color: #fff;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-
-.forms-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-.logowanie {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    left: 75%;
-    width: 50%;
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0rem 5rem;
-    overflow: hidden;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
-
-.title {
-    font-size: 2.2rem;
-    color: #444;
-    margin-bottom: 10px;
-  }
-
-.input-field {
-    max-width: 380px;
-    width: 100%;
-    background-color: #f0f0f0;
-    margin: 10px 0;
-    height: 55px;
-    border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
-    padding: 0 0.4rem;
-    position: relative;
-  }
-
-.input-field i {
-    text-align: center;
-    line-height: 55px;
-    color: #acacac;
-    transition: 0.5s;
-    font-size: 1.1rem;
-  }
-
-.input-field input {
-    background: none;
-    outline: none;
-    border: none;
-    line-height: 1;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #333;
-  }
-
-.input-field input::placeholder {
-    color: #aaa;
-    font-weight: 500;
-  }
-
-.btn {
-    width: 150px;
-    background-color: #FF7400;
-    border: none;
-    outline: none;
-    height: 49px;
-    border-radius: 49px;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    margin: 10px 0;
-    cursor: pointer;
-  }
-
-.btn:hover {
-    background-color: #ff8119;
-  }
-
-.container:before {
-    content: "";
-    position: absolute;
-    height: 2000px;
-    width: 2000px;
-    top: 50%;
-    right: 50%;
-    transform: translateY(-50%);
-    background-image: linear-gradient(-45deg, #FF7400 0%, #fa8220 100%);
-    border-radius: 50%;
-    z-index: 6;
-  }
-  @media (max-width: 870px) {
-    .container {
-      min-height: 800px;
-      height: 100vh;
-    }
-    .logowanie {
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      left: 50%;
-      width: 50%;
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-    .input-field {
-      max-width: 380px;
-      width: 100%;
-      background-color: #f0f0f0;
-      margin: 10px 0;
-      height: 55px;
-      border-radius: 55px;
-      display: grid;
-      grid-template-columns: 15% 85%;
-      padding: 0 0.4rem;
-      position: relative;
-    }
-    .container:before {
-      display: none;
-    }
-
-  } 
+  margin-top: 25px;
+  margin-left: 425px;
+  padding: 32px;
 }
 
-  
+.select-box {
+  display: flex;
+  width: 400px;
+  flex-direction:column;
+}
+
+.select-box .options-container {
+  background: #FF7400;
+  color: #f5f6fa;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+
+  order: 1;
+}
+
+.selected {
+  background: #FF7400;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #f5f6fa;
+  position: relative;
+
+  order: 0;
+}
+
+.selected::after {
+  content: "";
+  background: url("img/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  height: 100%;
+  width: 32px;
+  right: 10px;
+  top: 5px;
+
+  transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box .options-container.active + .selected::after {
+  transform: rotateX(180deg);
+  top: -6px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+  width: 8px;
+  background: #0d141f;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #525861;
+  border-radius: 0 8px 8px 0;
+}
+
+.select-box .option,
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.select-box .option:hover {
+  background: #414b57;
+}
+
+.select-box label {
+  cursor: pointer;
+}
+
+.select-box .option .punkty {
+  display: none;
+}
+.btn{
+  font-size: 16px;
+  padding: 8px 24px;
+  border-radius: 8px;
+  margin-top: 16px;
+  border: none;
+  background-color: #FF7400;
+  color: #f5f6fa;
+  cursor: pointer;
+  margin-top: 1px;
+  margin-left: 763px;
+}
